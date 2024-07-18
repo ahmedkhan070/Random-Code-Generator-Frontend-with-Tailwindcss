@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+
+    <div class="text-center">
+        <div class="mb-6">
+            <img src="https://img.freepik.com/free-vector/cartoon-style-robot-vectorart_78370-4103.jpg?t=st=1721295549~exp=1721299149~hmac=735f2cf5fbcbd9aef0f6ec7e311944dce99d419a05535e7d1f4a3b1c2872a95f&w=740" alt="Robot" class="mx-auto w-24 h-24">
+        </div>
+
+        <h1 class="text-2xl font-bold mb-4 bg-green-600 py-2 px-4 rounded-full">Random Password Generator</h1>
+        <p class="text-white mb-6">Secure, Strong and Unique passwords to keep your accounts safe online</p>
+
+        <div class="bg-gradient-to-b from-green-600 to-black py-2 px-5 rounded-lg mb-6">      
+            <input type="text" value="Xc4#fsAsfda#657a" class="w-full p-2 mb-4 rounded-md text-black">
+            <button class="bg-green-600 text-white py-2 px-5 rounded-full hover:bg-green-500">Generate</button>
+        </div>
+
+        <div class="bg-black border border-green-600 rounded-lg p-4 w-full max-w-lg flex">
+            <div class="w-1/2 mr-4">  <label for="password-length" class="bg-green-600 py-2 px-4 rounded-full">Password Length (6-64)</label>
+              <br><br>
+              <input type="range" id="password-length" min="6" max="64" value="20" class="mb-4">
+            </div>
+            <div class="w-1/2">  <div class="flex flex-col space-y-2">  <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox">
+                  <span class="ml-2">Uppercase (ABC)</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox">
+                  <span class.ml-2">Lowercase (abc)</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox">
+                  <span class="ml-2">Numbers (123)</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox">
+                  <span class="ml-2">Characters (#&amp;)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+
+</body>
+</html>
