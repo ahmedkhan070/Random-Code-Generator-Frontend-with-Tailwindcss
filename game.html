@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock, Paper, Scissors Game</title>
+</head>
+<body>
+
+<script>
+    function getComputerChoice() {
+        const choices = ['rock', 'paper', 'scissors'];
+        const randomIndex = Math.floor(Math.random() * choices.length);
+        return choices[randomIndex];
+    }
+
+    function playGame() {
+        let userScore = 0;
+        let computerScore = 0;
+        let playAgain = true;
+
+        while (playAgain) {
+            const userChoice = prompt("Enter your choice (rock, paper, or scissors):").toLowerCase();
+            if (!['rock', 'paper', 'scissors'].includes(userChoice)) {
+                alert("Invalid choice, please try again.");
+                continue;
+            }
+
+            const computerChoice = getComputerChoice();
+            let result = '';
+
+            if (userChoice === computerChoice) {
+                result = 'It\'s a draw!';
+            } else if (
+                (userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'scissors' && computerChoice === 'paper') ||
+                (userChoice === 'paper' && computerChoice === 'rock')
+            ) {
+                result = 'You win!';
+                userScore++;
+            } else {
+                result = 'You lose!';
+                computerScore++;
+            }
+
+            alert(`You chose ${userChoice}, computer chose ${computerChoice}. ${result}`);
+            playAgain = confirm("Do you want to play again?");
+
+            if (!playAgain) {
+                alert(`Final Scores:\nUser: ${userScore}\nComputer: ${computerScore}`);
+            }
+        }
+    }
+
+    playGame();
+</script>
+
+</body>
+</html>
