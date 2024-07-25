@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Collection App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .form-container, .movies-container {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        .movie {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Movie Collection App</h1>
+
+<div class="form-container">
+    <h3>Add Movie</h3>
+    <input type="text" id="title" placeholder="Title" required>
+    <input type="text" id="director" placeholder="Director" required>
+    <input type="number" id="releaseYear" placeholder="Release Year" required>
+    <input type="number" step="0.1" id="imdbRating" placeholder="IMDB Rating" required>
+    <button onclick="addMovie()">Add Movie</button>
+</div>
+
+<div class="movies-container" id="moviesContainer">
+    <h3>Movie List</h3>
+</div>
+
+<script>
+    let movies = [];
+
+    function addMovie() {
+        const title = document.getElementById('title').value;
+        const director = document.getElementById('director').value;
+        const releaseYear = document.getElementById('releaseYear').value;
+        const imdbRating = document.getElementById('imdbRating').value;
+
+        if (title && director && releaseYear && imdbRating) {
+            const movie = {
+                title: title,
+                director: director,
+                releaseYear: releaseYear,
+                imdbRating: imdbRating
+            };
+
+            movies.push(movie);
+            displayMovies();
+            clearForm();
+        } else {
+            alert("Please fill in all fields.");
+        }
+    }
+
+    function displayMovies() {
+        const moviesContainer = document.getElementById('moviesContainer');
+        moviesContainer.innerHTML = '<h3>Movie List</h3>';
+
+        movies.forEach((movie, index) => {
+            const movieDiv = document.createElement('div');
+            movieDiv.className = 'movie';
+            movieDiv.innerHTML = `
+                <div>
+                    <strong>${movie.title}</strong> by ${movie.director} (${movie.releaseYear}) - Rating: ${movie.imdbRating}
+                </div>
+                <button onclick="deleteMovie(${index})">Delete</button>
+            `;
+            moviesContainer.appendChild(movieDiv);
+        });
+    }
+
+    function deleteMovie(index) {
+        movies.splice(index, 1);
+        displayMovies();
+    }
+
+    function clearForm() {
+        document.getElementById('title').value = '';
+        document.getElementById('director').value = '';
+        document.getElementById('releaseYear').value = '';
+        document.getElementById('imdbRating').value = '';
+    }
+</script>
+
+</body>
+</html>
